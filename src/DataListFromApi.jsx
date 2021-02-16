@@ -18,7 +18,7 @@ function DataListFromApi() {
     }
 
     useEffect(() => {
-         fetchData();
+        fetchData();
     },[]);
 
     const handleFormSubmit = async event => {
@@ -51,7 +51,7 @@ function DataListFromApi() {
         <>
             <form onSubmit={handleFormSubmit}>
                 <input 
-                    data-testid = "form-field"
+                    data-testid = "form-field-cidade"
                     type="text"
                     value={item.cidade}
                     placeholder="Cidade"
@@ -59,7 +59,7 @@ function DataListFromApi() {
                     onChange={handleInputChange}
                 ></input>
                 <input 
-                    data-testid = "form-field"
+                    data-testid = "form-field-pais"
                     type="text"
                     value={item.pais}
                     placeholder="País"
@@ -68,10 +68,10 @@ function DataListFromApi() {
                 ></input>
                 <button data-testid = "btn-form" type="submit">Adicionar Cidade</button>
             </form>
-            <div>
+            <div data-testid = "lista">
                 {lista.map((item, index) => {
                     return (
-                        <div>
+                        <div key={index}>
                             <p>{item.id} - {item.cidade} - {item.pais}</p>
                             <button type="button" onClick={() => handleDelete(item.id, index)} >Excluir</button>
                         </div>
@@ -79,7 +79,7 @@ function DataListFromApi() {
                 })}
             </div>
         </>
-  )
+    )
 }
 
 export default DataListFromApi;
